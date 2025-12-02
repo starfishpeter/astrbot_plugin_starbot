@@ -36,6 +36,7 @@ class MyPlugin(Star):
         if raw_message.get("post_type") != "notice":
             return
 
+        user_id = raw_message.get("user_id")
         # 必须得是入群的群通知 才去做入群欢迎
         if raw_message.get("notice_type") == "group_increase":
             if not self.is_send_welcome:
@@ -43,12 +44,14 @@ class MyPlugin(Star):
             welcome_message = self.welcome_text
             if self.welcome_img and await is_valid_image_url(self.welcome_img):
                 chain = [
+                    Comp.At(qq=user_id),
                     # 用\ufeff对空格进行保护 防止Plain的Strip把空格去掉
                     Comp.Plain("\ufeff " + welcome_message),
                     Comp.Image.fromURL(self.welcome_img),
                 ]
             else:
                 chain = [
+                    Comp.At(qq=user_id),
                     Comp.Plain("\ufeff " + welcome_message),
                 ]
 
