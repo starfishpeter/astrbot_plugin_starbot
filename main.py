@@ -43,12 +43,13 @@ class MyPlugin(Star):
             welcome_message = self.welcome_text
             if self.welcome_img and await is_valid_image_url(self.welcome_img):
                 chain = [
-                    Comp.Plain(welcome_message),
+                    # 用\ufeff对空格进行保护 防止Plain的Strip把空格去掉
+                    Comp.Plain("\ufeff " + welcome_message),
                     Comp.Image.fromURL(self.welcome_img),
                 ]
             else:
                 chain = [
-                    Comp.Plain("\ufeff" + welcome_message),
+                    Comp.Plain("\ufeff " + welcome_message),
                 ]
 
             yield event.chain_result(chain)
