@@ -16,7 +16,7 @@ async def is_valid_image_url(url: str):
         logger.error(f"图片的URL加载失败: {e}")
         return False
 
-@register("astrbot_plugin_starbot", "StarBot", "基础功能多合一", "1.0.1")
+@register("astrbot_plugin_starbot", "StarBot", "基础功能整合", "1.0.1")
 class MyPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
