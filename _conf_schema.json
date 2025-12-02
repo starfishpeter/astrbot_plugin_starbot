@@ -1,0 +1,21 @@
+{
+  "is_send_welcome": {
+    "description": "是否发送入群欢迎消息",
+    "type": "bool",
+    "hint": "是否发送入群欢迎消息 默认关闭",
+    "default": false
+  },
+
+  "welcome_text": {
+    "description": "入群欢迎消息",
+    "type": "string",
+    "default": "默认欢迎文本"
+  },
+
+  "welcome_img": {
+    "description": "入群欢迎图片",
+    "hint": "填写入群信息的图片URL地址列表 默认空",
+    "type": "string",
+    "default": ""
+  }
+}
