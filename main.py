@@ -43,11 +43,15 @@ class MyPlugin(Star):
             welcome_message = self.welcome_text
             if self.welcome_img and await is_valid_image_url(self.welcome_img):
                 chain = [
+                    Comp.Plain(" "), 
                     Comp.Plain(welcome_message),
                     Comp.Image.fromURL(self.welcome_img),
                 ]
             else:
-                chain = [Comp.Plain(welcome_message)]
+                chain = [
+                    Comp.Plain(" "), 
+                    Comp.Plain(welcome_message),
+                ]
 
             yield event.chain_result(chain)
 
