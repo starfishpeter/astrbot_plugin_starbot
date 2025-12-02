@@ -35,6 +35,9 @@ class MyPlugin(Star):
             return
         if raw_message.get("post_type") != "notice":
             return
+        # 自己被拉入群不能触发
+        if event.message_obj.sender.user_id == event.message_obj.self_id:
+            return
 
         user_id = raw_message.get("user_id")
         # 必须得是入群的群通知 才去做入群欢迎
